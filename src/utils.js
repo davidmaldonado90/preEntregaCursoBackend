@@ -1,35 +1,35 @@
-import {fileUrlToPath} from "url";
+import  { fileURLToPath } from "url";
 import { dirname } from "path";
-import multer from "multer";
+// import multer from "multer";
 
 
-const __filename = fileUrlToPath(import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename)
 
 
-const storage = multer.diskStorage(
-    {
-        // ubicaion del directorio donde voy a guardar los archivos
-        destination: function (req, file, cb) {
-            cb(null, `${__dirname}/public/img`)
-        },
+// const storage = multer.diskStorage(
+//     {
+//         // ubicaion del directorio donde voy a guardar los archivos
+//         destination: function (req, file, cb) {
+//             cb(null, `${__dirname}/public/img`)
+//         },
 
-        // el nombre que quiero que tengan los archivos que voy a subir
-        filename: function (req, file, cb) {
-            // console.log(file);
-            cb(null, `${Date.now()}-${file.originalname}`)
+//         // el nombre que quiero que tengan los archivos que voy a subir
+//         filename: function (req, file, cb) {
+//             // console.log(file);
+//             cb(null, `${Date.now()}-${file.originalname}`)
 
-        }
-    }
-)
+//         }
+//     }
+// )
 
-export const uploader = multer({
-    storage,
-    onError: function (err, next) {
-        console.log(err);
-        next();
-    }
-});
+// export const uploader = multer({
+//     storage,
+//     onError: function (err, next) {
+//         console.log(err);
+//         next();
+//     }
+// });
 
 
 export default __dirname
