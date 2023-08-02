@@ -1,11 +1,12 @@
-<div>
+<main>
     {{#each products}}
-    <div>
-        <h1>Nombre del producto: {{this.tittle}}</h1>
-        <p>Descripcion: {{this.description}}</p>
-        <p>Categoria: {{this.category}}</p>
-        <hr>
-    </div>
-        
+        <div>
+            <h1>Nombre del producto: {{this.tittle}}</h1>
+            <p>Descripcion: {{this.description}}</p>
+            <p>Categoria: {{this.category}}</p>
+        </div>
     {{/each}}
-</div>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="../../public/js/indexjs.js"></script>

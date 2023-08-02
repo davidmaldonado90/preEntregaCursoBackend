@@ -5,6 +5,7 @@ import views from "../src/routes/views.routes.js"
 import handlebars from 'express-handlebars';
 import __dirname from '../src/utils.js'
 import path from 'path';
+import { Server } from "socket.io";
 
 const app = express()
 const PORT = 8080
@@ -22,9 +23,12 @@ app.use("/api/products", productRoutes)
 app.use("/api/cart", cartRouter)
 app.use("/", views)
 
-
-
-
-app.listen(PORT, ()=>{
+const serverHttp = app.listen(PORT, ()=> {
     console.log(`running on port: ${PORT}`);
+})
+
+const socketServer = new Server(serverHttp)
+
+socketServer.on('connection', socket => {
+    console.log("Nuevo cliente conectado!!");
 })
