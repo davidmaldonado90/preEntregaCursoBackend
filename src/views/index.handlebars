@@ -1,6 +1,6 @@
 <main>
     {{#each products}}
-        <div>
+        <div class=" product">
             <h1>Nombre del producto: {{this.tittle}}</h1>
             <p>Descripcion: {{this.description}}</p>
             <p>Categoria: {{this.category}}</p>
@@ -8,5 +8,3 @@
     {{/each}}
 </main>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="../../public/js/indexjs.js"></script>

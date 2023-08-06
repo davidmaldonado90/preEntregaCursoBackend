@@ -13,7 +13,31 @@ main{
     background-color: brown;
 }
 
-div{
+.product{
+    padding: 30px;
+    margin: 10px;
+    border: 2px solid black;
+    background-color: dimgrey;
+}
+
+#productsList{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: brown;
+}
+
+.realProd{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: auto;
     padding: 30px;
     margin: 10px;
     border: 2px solid black;

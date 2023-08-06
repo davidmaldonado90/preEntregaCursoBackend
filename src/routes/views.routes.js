@@ -10,4 +10,9 @@ views.get('/', async (req, res)=>{
 
 })
 
+views.get('/realTimeProducts', (req, res)=>{
+    res.render("realTimeProducts");
+
+})
+
 export default views

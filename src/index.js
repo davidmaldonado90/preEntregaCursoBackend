@@ -6,6 +6,10 @@ import handlebars from 'express-handlebars';
 import __dirname from '../src/utils.js'
 import path from 'path';
 import { Server } from "socket.io";
+import ProductManager from "./controllers/productManager.js";
+
+
+const manager = new ProductManager()
 
 const app = express()
 const PORT = 8080
@@ -29,6 +33,9 @@ const serverHttp = app.listen(PORT, ()=> {
 
 const socketServer = new Server(serverHttp)
 
-socketServer.on('connection', socket => {
-    console.log("Nuevo cliente conectado!!");
+socketServer.on('connection', async (socket) => {
+    const data = await manager.getProducts();
+    const dataProd = JSON.stringify (data);
+    socket.emit("realTimeProducts", dataProd );
+
 })
