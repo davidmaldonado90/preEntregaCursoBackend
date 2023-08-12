@@ -33,9 +33,22 @@ const serverHttp = app.listen(PORT, ()=> {
 
 const socketServer = new Server(serverHttp)
 
-socketServer.on('connection', async (socket) => {
-    const data = await manager.getProducts();
-    const dataProd = JSON.stringify (data);
-    socket.emit("realTimeProducts", dataProd );
 
-})
+socketServer.on('connection', async (socket) => {
+
+    const data = await manager.getProducts();
+    socket.emit("realTimeProducts", JSON.stringify(data));
+
+    socket.on("addProducts", async (productData) => {
+        const newProduct = JSON.parse(productData);
+        const addedProduct = await manager.addProducts(newProduct);
+        socket.emit("productAdded", JSON.stringify(addedProduct));
+    });
+
+    socket.on("deleteProducts", async (productId) => {
+        const deleteResult = await manager.deleteProducts(productId);
+        if (deleteResult === "delete product") {
+            socketServer.emit("productDeleted", productId);
+        }
+    });
+});
